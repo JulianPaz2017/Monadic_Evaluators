@@ -188,4 +188,3 @@ Para más detalles de esta extensión, ver [7](https://ghc.gitlab.haskell.org/gh
 [6] - http://hackage.haskell.org/package/strict-0.4/docs/Data-Strict-Tuple.html
 
 [7] - https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts/pattern_synonyms.html
-# Monadic-Evaluators
