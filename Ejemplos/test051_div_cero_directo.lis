@@ -1,0 +1,2 @@
+// Test 51: División directa por cero
+x = 5 / 0

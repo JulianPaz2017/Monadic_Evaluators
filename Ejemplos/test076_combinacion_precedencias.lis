@@ -1,0 +1,9 @@
+// Test 76: Combinación de precedencias
+a = 2;
+b = 3;
+c = 4;
+if !(a + b * c == 14) && (a < b || b < c) {
+    x = 1
+} else {
+    x = 2
+}

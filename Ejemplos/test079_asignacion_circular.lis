@@ -1,0 +1,6 @@
+// Test 79: Asignación circular (debería funcionar)
+x = 1;
+y = 2;
+temp = x;
+x = y;
+y = temp

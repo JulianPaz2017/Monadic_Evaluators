@@ -1,0 +1,2 @@
+// Test 53: División por expresión que resulta cero
+x = 5 / (3 - 3)

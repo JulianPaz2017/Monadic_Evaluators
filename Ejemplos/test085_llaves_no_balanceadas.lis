@@ -1,0 +1,2 @@
+// Test 85: Llaves no balanceadas (ERROR SINTÁCTICO)
+if x == 5 { y = 1

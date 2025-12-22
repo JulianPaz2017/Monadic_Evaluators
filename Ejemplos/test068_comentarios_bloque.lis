@@ -1,0 +1,7 @@
+// Test 68: Comentarios de bloque
+x = /* comentario */ 5;
+/*
+Este es un comentario
+de múltiples líneas
+*/
+y = 10

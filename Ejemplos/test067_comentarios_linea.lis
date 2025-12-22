@@ -1,0 +1,4 @@
+// Test 67: Comentarios de línea
+x = 5; // esto es un comentario
+// y = 10; esta línea está comentada
+z = x + 1

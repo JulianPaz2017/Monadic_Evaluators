@@ -1,0 +1,6 @@
+a = 4;
+b = 2;
+repeat {
+    a = a - b;
+    temp = temp + a        
+} until (limit > 0)        

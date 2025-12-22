@@ -1,0 +1,7 @@
+// Test 45: Case con segunda condición verdadera
+x = 6;
+case {
+    x == 5 : { y = 10 }
+    x < 7 : { y = 100 }
+    x > 10 : { y = 1000 }
+}

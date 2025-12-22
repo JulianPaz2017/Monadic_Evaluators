@@ -1,0 +1,2 @@
+// Test 83: Palabra clave mal escrita (ERROR SINTÁCTICO)
+iif x == 5 { y = 1 }

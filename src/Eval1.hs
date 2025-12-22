@@ -56,10 +56,103 @@ stepCommStar c    = stepComm c >>= \c' -> stepCommStar c'
 
 -- Evalua un paso de un comando
 stepComm :: MonadState m => Comm -> m Comm
-stepComm = undefined
+stepComm (Let var intExp)                 = 
+  do {
+      e <- evalExp intExp;
+      update var e;
+      return Skip
+     }
+stepComm (Seq Skip comm2)                 = return comm2
+stepComm (Seq comm1 comm2)                = 
+  do {
+      c1 <- stepComm comm1;
+      return (Seq c1 comm2)
+     } 
+stepComm (IfThenElse boolExp comm1 comm2) = 
+  do {
+      b <- evalExp boolExp;
+      if b then return comm1 else return comm2
+     }
+stepComm (Repeat boolExp comm)            = 
+  do {
+      let comm' = IfThenElse boolExp Skip (Repeat boolExp comm)
+      in return (Seq comm comm')
+     }
 
 -- Evalua una expresion
 evalExp :: MonadState m => Exp a -> m a
-evalExp = undefined
-
-
+evalExp (Const n)               = return n
+evalExp (Var var)               = lookfor var
+evalExp (UMinus intExp)         = 
+  do {
+      e <- evalExp intExp;
+      return (-e)
+     }
+evalExp (Plus intExp1 intExp2)  = 
+  do {
+      e1 <- evalExp intExp1;
+      e2 <- evalExp intExp2;
+      return (e1 + e2)
+     }
+evalExp (Minus intExp1 intExp2) = 
+  do {
+      e1 <- evalExp intExp1;
+      e2 <- evalExp intExp2;
+      return (e1 - e2)
+     }
+evalExp (Times intExp1 intExp2) = 
+  do {
+      e1 <- evalExp intExp1;
+      e2 <- evalExp intExp2;
+      return (e1 * e2)
+     }
+evalExp (Div intExp1 intExp2)   = 
+  do {
+      e1 <- evalExp intExp1;
+      e2 <- evalExp intExp2;
+      return (e1 `div` e2)
+     }
+-- Bool
+evalExp BTrue                   = return True
+evalExp BFalse                  = return False
+evalExp (Lt intExp1 intExp2)    = 
+  do {
+      e1 <- evalExp intExp1;
+      e2 <- evalExp intExp2;
+      return (e1 <= e2)
+     }
+evalExp (Gt intExp1 intExp2)    = 
+  do {
+      e1 <- evalExp intExp1;
+      e2 <- evalExp intExp2;
+      return (e1 >= e2)
+     }
+evalExp (Eq intExp1 intExp2)    = 
+  do {
+      e1 <- evalExp intExp1;
+      e2 <- evalExp intExp2;
+      return (e1 == e2)
+     }
+evalExp (NEq intExp1 intExp2)   = 
+  do {
+      e1 <- evalExp intExp1;
+      e2 <- evalExp intExp2;
+      return (not (e1 == e2))
+     }
+evalExp (And boolExp1 boolExp2) = 
+  do {
+      b1 <- evalExp boolExp1;
+      b2 <- evalExp boolExp2;
+      return (b1 && b2)
+     }
+evalExp (Or boolExp1 boolExp2)  = 
+  do {
+      b1 <- evalExp boolExp1;
+      b2 <- evalExp boolExp2;
+      return (b1 || b2)
+     }
+evalExp (Not boolExp)           = 
+  do {
+      b <- evalExp boolExp;
+      return (not b)
+     }

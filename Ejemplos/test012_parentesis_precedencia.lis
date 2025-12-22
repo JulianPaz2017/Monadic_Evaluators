@@ -1,0 +1,2 @@
+// Test 12: Paréntesis modificando precedencia
+x = (2 + 3) * 4

@@ -1,0 +1,4 @@
+// Test 75: Asociatividad completa
+x = 20 - 10 - 5;
+y = 20 / 10 / 2;
+z = true || false || true && false

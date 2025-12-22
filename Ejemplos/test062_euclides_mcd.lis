@@ -1,0 +1,11 @@
+// Test 62: Algoritmo de Euclides (MCD)
+a = 48;
+b = 18;
+repeat {
+    if a > b {
+        a = a - b
+    } else {
+        b = b - a
+    }
+} until a == b;
+mcd = a

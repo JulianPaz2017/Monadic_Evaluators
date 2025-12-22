@@ -1,0 +1,2 @@
+// Test 21: Precedencia && sobre ||
+if false || true && false { y = 1 }

@@ -1,0 +1,2 @@
+// Test 22: Paréntesis en booleanas
+if (false || true) && false { y = 1 } else { y = 2 }

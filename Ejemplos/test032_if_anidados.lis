@@ -1,0 +1,12 @@
+// Test 32: If anidados
+x = 5;
+y = 3;
+if x > 0 {
+    if y > 0 {
+        z = x + y
+    } else {
+        z = x - y
+    }
+} else {
+    z = 0
+}

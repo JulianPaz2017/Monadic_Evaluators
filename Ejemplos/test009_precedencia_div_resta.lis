@@ -1,0 +1,2 @@
+// Test 9: Precedencia división sobre resta
+x = 10 - 8 / 2

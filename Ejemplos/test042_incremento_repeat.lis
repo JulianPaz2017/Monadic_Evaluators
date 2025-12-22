@@ -1,0 +1,6 @@
+// Test 42: Incremento en repeat
+x = 0;
+sum = 0;
+repeat {
+    sum = sum + x++
+} until x == 5

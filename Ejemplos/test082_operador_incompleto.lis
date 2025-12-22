@@ -1,0 +1,2 @@
+// Test 82: Operador incompleto (ERROR SINTÁCTICO)
+x = 5 +

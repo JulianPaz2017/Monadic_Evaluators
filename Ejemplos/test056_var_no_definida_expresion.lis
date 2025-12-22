@@ -1,0 +1,2 @@
+// Test 56: Variable no definida en expresión
+x = y + 5

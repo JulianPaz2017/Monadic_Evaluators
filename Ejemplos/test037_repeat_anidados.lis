@@ -1,0 +1,10 @@
+// Test 37: Repeat anidados
+x = 0;
+y = 0;
+repeat {
+    y = 0;
+    repeat {
+        y = y + 1
+    } until y == 2;
+    x = x + 1
+} until x == 3

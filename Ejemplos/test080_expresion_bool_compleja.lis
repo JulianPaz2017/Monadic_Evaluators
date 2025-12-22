@@ -1,0 +1,5 @@
+// Test 80: Expresión booleana compleja
+x = 5;
+y = 10;
+z = 15;
+result = (x < y && y < z) || (x > z && z > y) && !(x == y || y == z)

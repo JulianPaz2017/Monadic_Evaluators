@@ -1,0 +1,7 @@
+// Test 36: Repeat con múltiples variables
+x = 0;
+y = 10;
+repeat {
+    x = x + 1;
+    y = y - 1
+} until x > y

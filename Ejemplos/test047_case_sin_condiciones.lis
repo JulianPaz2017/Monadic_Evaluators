@@ -1,0 +1,8 @@
+// Test 47: Case sin condiciones verdaderas
+x = 8;
+y = 0;
+case {
+    x == 5 : { y = 10 }
+    x < 7 : { y = 100 }
+    x > 10 : { y = 1000 }
+}

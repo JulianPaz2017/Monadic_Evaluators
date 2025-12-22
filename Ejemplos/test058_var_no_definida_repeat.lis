@@ -1,0 +1,4 @@
+// Test 58: Variable no definida en repeat
+repeat {
+    z = 1
+} until x > 5

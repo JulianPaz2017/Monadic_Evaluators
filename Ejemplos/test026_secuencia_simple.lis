@@ -1,0 +1,4 @@
+// Test 26: Secuencia simple
+x = 1;
+x = x + 1;
+x = x * 2

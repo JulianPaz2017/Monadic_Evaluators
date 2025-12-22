@@ -1,0 +1,3 @@
+// Test 72: Números grandes
+x = 999999999;
+y = x + 1

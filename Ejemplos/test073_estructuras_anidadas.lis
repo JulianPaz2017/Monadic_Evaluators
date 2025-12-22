@@ -1,0 +1,14 @@
+// Test 73: Estructuras de control anidadas profundas
+if true {
+    if true {
+        if true {
+            repeat {
+                if true {
+                    x = 1
+                } else {
+                    x = 2
+                }
+            } until false
+        }
+    }
+}

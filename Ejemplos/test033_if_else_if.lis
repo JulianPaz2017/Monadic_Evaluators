@@ -1,0 +1,11 @@
+// Test 33: If-else-if simulado
+x = 7;
+if x < 5 {
+    y = 1
+} else {
+    if x < 10 {
+        y = 2
+    } else {
+        y = 3
+    }
+}

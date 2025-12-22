@@ -1,0 +1,5 @@
+// Test 77: Repeat que debe ejecutarse exactamente una vez
+x = 0;
+repeat {
+    x = 1
+} until true

@@ -1,0 +1,12 @@
+// Test 50: Case anidados
+x = 5;
+y = 3;
+case {
+    x > 0 : {
+        case {
+            y == 3 : { z = 100 }
+            y == 4 : { z = 200 }
+        }
+    }
+    x < 0 : { z = 0 }
+}

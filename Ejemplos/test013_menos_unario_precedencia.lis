@@ -1,0 +1,2 @@
+// Test 13: Menos unario con precedencia
+x = -2 + 3

@@ -1,0 +1,2 @@
+// Test 11: Asociatividad a izquierda multiplicación
+x = 8 / 4 / 2

@@ -1,0 +1,4 @@
+// Test 48: Case vacío
+x = 5;
+y = 0;
+case { }

@@ -1,0 +1,5 @@
+// Test 27: Secuencias anidadas
+x = 0;
+y = 1;
+x = x + 1; y = y + 1;
+z = x + y

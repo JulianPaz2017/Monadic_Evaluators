@@ -1,0 +1,18 @@
+// Test 65: Programa complejo mezclando todo
+n = 5;
+sum = 0;
+i = 1;
+repeat {
+    temp = i++;
+    case {
+        temp < 3 : { sum = sum + temp * 2 }
+        temp == 3 : { sum = sum + temp }
+        temp > 3 : { 
+            if temp < n {
+                sum = sum + temp / 2
+            } else {
+                sum = sum + temp
+            }
+        }
+    }
+} until i > n

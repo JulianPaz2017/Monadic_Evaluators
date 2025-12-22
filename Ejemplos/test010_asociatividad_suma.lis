@@ -1,0 +1,2 @@
+// Test 10: Asociatividad a izquierda suma
+x = 10 - 3 - 2
