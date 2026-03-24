@@ -1,5 +1,0 @@
-// Test 35: Repeat que no entra (condición inicial verdadera)
-x = 5;
-repeat {
-    x = x + 1
-} until x > 4

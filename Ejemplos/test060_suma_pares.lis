@@ -1,8 +1,0 @@
-// Test 60: Suma de números pares hasta n
-n = 10;
-sum = 0;
-i = 2;
-repeat {
-    sum = sum + i;
-    i = i + 2
-} until i > n

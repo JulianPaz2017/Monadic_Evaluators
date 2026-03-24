@@ -92,9 +92,70 @@ stepCommStar c    = stepComm c >>= \c' -> stepCommStar c'
 -- Evalua un paso de un comando
 -- stepComm :: [dar el tipo segun corresponda]
 stepComm :: (MonadTrace m, MonadError m, MonadState m) => Comm -> m Comm
-stepComm = undefined
+stepComm (Let var intExp) =
+  do {
+      e <- evalExp intExp;
+      update var e;
+      putTrace ("Let " ++ var ++ " " ++ (show e) ++ " ");
+      return Skip
+     }
 
--- Evalua una expresion 
--- evalIntExp :: [dar el tipo segun corresponda]
-evalExp :: (MonadTrace m, MonadError m, MonadState m) => Exp a -> m a
-evalExp = undefined
+stepComm (Seq Skip comm2)                 = return comm2
+stepComm (Seq comm1 comm2)                = 
+  do {
+      c1 <- stepComm comm1;
+      return (Seq c1 comm2)
+     } 
+stepComm (IfThenElse boolExp comm1 comm2) = 
+  do {
+      b <- evalExp boolExp;
+      if b then return comm1 else return comm2
+     }
+stepComm (Repeat boolExp comm)            = 
+  do {
+      let comm' = IfThenElse boolExp Skip (Repeat boolExp comm)
+      in return (Seq comm comm')
+     }
+
+-- Evalua una expresion
+evalExp :: (MonadError m, MonadState m) => Exp a -> m a
+evalExp (Const n)               = return n
+evalExp (Var var)               = lookfor var
+evalExp (UMinus intExp)         = evalUnary negate intExp
+evalExp (Plus intExp1 intExp2)  = evalBinary (+) intExp1 intExp2
+evalExp (Minus intExp1 intExp2) = evalBinary (-) intExp1 intExp2
+evalExp (Times intExp1 intExp2) = evalBinary (*) intExp1 intExp2
+evalExp (Div intExp1 intExp2)   = 
+  do {
+      e1 <- evalExp intExp1;
+      e2 <- evalExp intExp2;
+      if e2 == 0 then throw DivByZero else return (e1 `div` e2)
+     }
+
+-- Bool
+evalExp BTrue                   = return True
+evalExp BFalse                  = return False
+evalExp (Not boolExp)           = evalUnary not boolExp
+evalExp (Lt intExp1 intExp2)    = evalBinary (<) intExp1 intExp2
+evalExp (Gt intExp1 intExp2)    = evalBinary (>) intExp1 intExp2
+evalExp (Eq intExp1 intExp2)    = evalBinary (==) intExp1 intExp2
+evalExp (NEq intExp1 intExp2)   = evalBinary (/=) intExp1 intExp2
+evalExp (And boolExp1 boolExp2) = evalBinary (&&) boolExp1 boolExp2
+evalExp (Or boolExp1 boolExp2)  = evalBinary (||) boolExp1 boolExp2
+
+
+evalUnary :: (MonadState m, MonadError m) => (a -> b) -> Exp a -> m b
+evalUnary op e = 
+  do {
+      v <- evalExp e;
+      return (op v)
+     }
+
+
+evalBinary :: (MonadState m, MonadError m) => (a -> a -> b) -> Exp a -> Exp a -> m b
+evalBinary op e0 e1 = 
+  do {
+      v0 <- evalExp e0;
+      v1 <- evalExp e1;
+      return (op v0 v1)
+     }
